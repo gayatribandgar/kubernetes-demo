@@ -65,12 +65,15 @@
                                  }
 
                 }
+                stage("kubernetes deployment"){
+                  steps{sh 'kubectl apply -f allergy-service-deployment.yml'
+                  }
+        
+         }
 
                 }
 
-                stage("kubernetes deployment"){
-        sh 'kubectl apply -f allergy-service-deployment.yml'
-         }
+                
         }
 
       
