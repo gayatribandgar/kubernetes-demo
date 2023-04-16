@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: allergy-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: allergy-service
+  template:
+    metadata:
+      labels:
+        app: allergy-service
+    spec:
+      containers:
+        - name: allergy-service-image
+          image: gayatribandgar/g3-allergy-service-demo:allergy-service-image
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PORT
+              value: "8080"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: allergy-service
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    app: allergy-service
