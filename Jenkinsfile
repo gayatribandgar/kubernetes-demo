@@ -60,7 +60,7 @@
 
                             steps {
 
-                         sh 'docker push gayatribandgar/g3-allergy-service-demo'
+                         sh 'docker push gayatribandgar/g3-allergy-service-demo:allergy-service-image'
 
                                  }
 
