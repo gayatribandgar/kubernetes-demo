@@ -60,20 +60,17 @@
 
                             steps {
 
-                         sh 'docker push gayatribandgar/g3-allergy-service-demo:allergy-service-image'
+                         sh 'docker push gayatribandgar/g3-allergy-service-demo'
 
                                  }
 
                 }
-                        stage('kubernetes deployment'){
-                          steps{sh 'kubectl apply -f allergy-service-deployment.yml'
-                          }
-        
-         }
 
                 }
 
-        
+                stage("kubernetes deployment"){
+        sh 'kubectl apply -f allergy-service-deployment.yml'
+         }
         }
 
       
